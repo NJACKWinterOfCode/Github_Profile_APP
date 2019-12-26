@@ -5,9 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/ViewProfileButton"
         android:textColor="#FFFFFF"
         android:background="#000000"
         android:layout_width="wrap_content"
@@ -19,23 +18,17 @@
         android:layout_marginEnd="146dp"
         android:layout_marginBottom="181dp"
         android:text="@string/view_profile2" />
-
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/TypeGithubHandle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_above="@+id/button3"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-
         android:layout_marginStart="115dp"
         android:layout_marginTop="207dp"
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="121dp"
-
-
         android:text="Github Handle" />
-
 </RelativeLayout>
