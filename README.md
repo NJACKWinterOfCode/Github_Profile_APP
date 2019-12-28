@@ -2,14 +2,14 @@
 An app that gives the details of an user when a github username is typed.
 
 ## Basic features to be implemented
-* A basic app in Kotlin
-* A basic layout to take input username 
-  * Must create fragments (MainActivity should be the only activity present and it would be the base of all the other fragments that would be created later)
-* Implementation of the API call using retrofit
-* Show the user data properly in a fragment
+* A basic app in Kotlin.
+* A basic layout to take input username.
+  * Must create fragments (MainActivity should be the only activity present and it would be the base of all the other fragments that would be created later).
+* Implementation of the API call using retrofit.
+* Show the user data properly in a fragment.
 
 
 ## Contributing Guidelines
-* Read the [Get-Started](https://github.com/NJACKWinterOfCode/Get-Started) Repo
-* Make all Pull requests in the development branch
-* Always refer an issue while making a pull request
+* Read the [Get-Started](https://github.com/NJACKWinterOfCode/Get-Started) Repo.
+* Make all Pull requests in the development branch.
+* Always refer an [issue](https://github.com/njackwinterofcode/Github_Profile_APP/issues) while making a pull request.
