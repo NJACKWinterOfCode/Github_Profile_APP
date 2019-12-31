@@ -13,7 +13,7 @@ interface GithubApiSevice {
 
     @GET("users/{user}")
     fun Check(@Path("user") user: String): Observable<Model.Result>
-    // fun Check(): Observable<Model.Result>
+
 
     companion object {
         fun create(): GithubApiSevice {
