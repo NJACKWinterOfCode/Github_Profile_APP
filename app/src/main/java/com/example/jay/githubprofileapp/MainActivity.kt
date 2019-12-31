@@ -1,6 +1,4 @@
 package com.example.jay.githubprofileapp
-
-
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -29,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun beginSearch(searchString: String) {
-        disposable = githubApiSevice.Check( searchString)
+        disposable = githubApiSevice.Check(searchString)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
