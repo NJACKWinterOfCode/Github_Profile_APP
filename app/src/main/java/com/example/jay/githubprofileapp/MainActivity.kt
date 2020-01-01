@@ -1,7 +1,7 @@
 package com.example.jay.githubprofileapp
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
     private var disposable: Disposable? = null
 
     private var name = ""
+    val adapter = RepoAdapter()
+
     private val githubApiSevice by lazy {
         GithubApiSevice.create()
     }
@@ -31,6 +33,8 @@ class MainActivity : AppCompatActivity() {
                 edit_search.setError("Please enter valid name")
             }
         }
+
+        rvRepos.adapter = adapter
     }
 
     private fun beginSearch(searchString: String) {
@@ -42,7 +46,7 @@ class MainActivity : AppCompatActivity() {
                 { result ->
                     successLoading()
                     setProfileData(result)
-             //       loadRepos()
+                    loadRepos()
                 },
                 { error ->
                     val msg =  if (error.message!!.contains("404"))  "Not Found" else "Network Issue"
@@ -75,23 +79,40 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadRepos() {
+        Log.d(TAG, "loadRepos")
+        try {
+            disposable = githubApiSevice.getRepos(name)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                    { result ->
+                        // successLoading()
+                        fillRV(result)
+                    },
+                    { error ->
+                        val msg =
+                            if (error.message!!.contains("404")) "Not Found" else "Network Issue"
+                        edit_search.error = msg
+                        // erroLoading()
+                    }
+                )
+        } catch (e: Exception) {
 
-        disposable = githubApiSevice.getRepos(name)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
-                { result ->
-                    successLoading() },
-                { error ->
-                    edit_search.error = "Not Found!!"
-                }
-            )
+            Log.d(TAG, "loadRepos ${e.message}")
+        }
+    }
+
+    private fun fillRV(result: List<Repo>) {
+        Log.d(TAG, "size ${result.size}")
+        adapter.list = result
+
     }
 
     private fun setProfileData(result: Model.Result?) {
         if (result != null){
             tvName.text = result.login
             tvBio.text = result.bio
+            tvUrl.text = result.url
         }
     }
 

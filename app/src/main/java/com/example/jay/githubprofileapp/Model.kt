@@ -8,4 +8,4 @@ object Model {
 
 }
 
-data class Repo (val full_name:String)
+data class Repo(val full_name: String, val forks_count: Int)

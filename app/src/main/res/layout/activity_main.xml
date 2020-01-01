@@ -60,8 +60,14 @@
 
     <include
         android:id="@+id/layoutProfile"
-        android:visibility="gone"
         layout="@layout/acount_detail_result"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRepos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 
 </LinearLayout>
