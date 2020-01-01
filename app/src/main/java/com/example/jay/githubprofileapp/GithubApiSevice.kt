@@ -14,6 +14,9 @@ interface GithubApiSevice {
     @GET("users/{user}")
     fun Check(@Path("user") user: String): Observable<Model.Result>
 
+    @GET("users/{user}/repos")
+    fun getRepos(@Path("user") user: String): Observable<List<Repo>>
+
 
     companion object {
         fun create(): GithubApiSevice {
@@ -21,7 +24,7 @@ interface GithubApiSevice {
             val retrofit = Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("https://api.github.com")
+                .baseUrl("https://api.github.com/")
                 .build()
 
             return retrofit.create(GithubApiSevice::class.java)

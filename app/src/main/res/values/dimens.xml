@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tvDetailSize">12sp</dimen>
+    <dimen name="tvLangSize">11sp</dimen>
+    <dimen name="tvInfoSize">17sp</dimen>
+    <dimen name="tvRepoNameSize">17sp</dimen>
+</resources>
