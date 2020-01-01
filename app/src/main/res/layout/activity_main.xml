@@ -3,28 +3,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="20dp"
+    android:layoutDirection="ltr"
+    android:background="@color/mainBg"
     tools:context="com.example.jay.githubprofileapp.MainActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:padding="5dp"
+        android:text="Github UserName"/>
+
 
     <EditText
         android:id="@+id/edit_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="enter"
-        android:textAlignment="center" />
+        android:textAlignment="viewStart"
+        android:layout_marginBottom="10dp"
+        android:background="@color/viewBgColor"
+        android:hint="user1"
+        android:text="mahmoudmabrok"
+        android:padding="16dp"
+        android:inputType="text" />
 
     <Button
-        android:id="@+id/btn_search"
+        android:id="@+id/btnSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="enter" />
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
+        android:text="Search" />
 
-    <TextView
-        android:id="@+id/txt_search_result"
+    <LinearLayout
+        android:id="@+id/spHome"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="24sp" />
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:visibility="visible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SpinKitView.Small.FoldingCube"
+            app:SpinKit_Color="@color/colorPrimary"
+            />
+
+    </LinearLayout>
+
+
+    <include
+        android:id="@+id/layoutProfile"
+        android:visibility="gone"
+        layout="@layout/acount_detail_result"/>
+
 
 </LinearLayout>

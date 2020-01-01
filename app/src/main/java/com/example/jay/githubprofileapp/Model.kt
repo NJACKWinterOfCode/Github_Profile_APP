@@ -7,3 +7,5 @@ object Model {
                       val url:String)
 
 }
+
+data class Repo (val full_name:String)
