@@ -40,25 +40,38 @@ class MainActivity : AppCompatActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { result ->
-                    finishLoading()
+                    successLoading()
                     setProfileData(result)
              //       loadRepos()
                 },
                 { error ->
-                    edit_search.error = "Not Found!!"
+                    val msg =  if (error.message!!.contains("404"))  "Not Found" else "Network Issue"
+                    edit_search.error = msg
+                    erroLoading()
                 }
             )
     }
 
-    private fun finishLoading() {
+    private fun erroLoading(){
+        btnSearch.isEnabled = true
+        hideIndicator()
+    }
+
+    private fun hideIndicator() {
         spHome.visibility = View.GONE
+    }
+
+    private fun successLoading() {
+        hideIndicator()
         layoutProfile.visibility  = View.VISIBLE
+        btnSearch.isEnabled = true
 
     }
 
     private fun startLoading() {
         spHome.visibility = View.VISIBLE
         layoutProfile.visibility  = View.GONE
+        btnSearch.isEnabled = false
     }
 
     private fun loadRepos() {
@@ -68,7 +81,7 @@ class MainActivity : AppCompatActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { result ->
-                    finishLoading() },
+                    successLoading() },
                 { error ->
                     edit_search.error = "Not Found!!"
                 }
