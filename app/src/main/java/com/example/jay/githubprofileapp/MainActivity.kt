@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun beginSearch(searchString: String) {
         startLoading()
+        Thread.sleep(1500)
         disposable = githubApiSevice.Check(searchString)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -67,14 +68,19 @@ class MainActivity : AppCompatActivity() {
 
     private fun successLoading() {
         hideIndicator()
+
         layoutProfile.visibility  = View.VISIBLE
+        rvRepos.visibility = View.VISIBLE
         btnSearch.isEnabled = true
 
     }
 
     private fun startLoading() {
         spHome.visibility = View.VISIBLE
+
         layoutProfile.visibility  = View.GONE
+        rvRepos.visibility = View.GONE
+
         btnSearch.isEnabled = false
     }
 

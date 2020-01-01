@@ -53,7 +53,16 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.Holder> {
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int i) {
         Repo item = list.get(i);
-        holder.tvName.setText(item.getFull_name());
+        holder.tvName.setText(item.getName());
+        holder.tvLanguage.setText(item.getLanguage());
+        holder.tvSize.setText(ExtensionsKt.addNum("Size", item.getSize()));
+        holder.tvStarCount.setText(ExtensionsKt.addNum("Stars", item.getStargazers_count()));
+        holder.tvWatchers.setText(ExtensionsKt.addNum("Watcher", item.getWatchers_count()));
+        holder.tvForks.setText(ExtensionsKt.addNum("Forks", item.getForks_count()));
+
+
+
+
     }
 
     @Override
@@ -63,8 +72,20 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.Holder> {
 
     class Holder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.tvRepoFullName)
+        @BindView(R.id.tvRepoName)
         TextView tvName;
+        @BindView(R.id.tvSize)
+        TextView tvSize;
+        @BindView(R.id.tvRepoLanguage)
+        TextView tvLanguage;
+        @BindView(R.id.tvStarCount)
+        TextView tvStarCount;
+        @BindView(R.id.tvForkCount)
+        TextView tvForks;
+        @BindView(R.id.tvWatcher)
+        TextView tvWatchers;
+
+
 
         Holder(@NonNull View itemView) {
             super(itemView);

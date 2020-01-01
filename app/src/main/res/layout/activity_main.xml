@@ -1,73 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:layoutDirection="ltr"
-    android:background="@color/mainBg"
-    tools:context="com.example.jay.githubprofileapp.MainActivity">
+    android:background="@color/mainBg">
 
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:padding="5dp"
-        android:text="Github UserName"/>
-
-
-    <EditText
-        android:id="@+id/edit_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="viewStart"
-        android:layout_marginBottom="10dp"
-        android:background="@color/viewBgColor"
-        android:hint="user1"
-        android:text="mahmoudmabrok"
-        android:padding="16dp"
-        android:inputType="text" />
-
-    <Button
-        android:id="@+id/btnSearch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="5dp"
-        android:text="Search" />
-
-    <LinearLayout
-        android:id="@+id/spHome"
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center">
+
+        android:layoutDirection="ltr"
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:context="com.example.jay.githubprofileapp.MainActivity">
 
 
-        <com.github.ybq.android.spinkit.SpinKitView
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:padding="5dp"
+            android:text="@string/github_username" />
+
+
+        <EditText
+            android:id="@+id/edit_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/viewBgColor"
+            android:hint="@string/username"
+            android:inputType="text"
+            android:padding="16dp"
+            android:textAlignment="viewStart" />
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:text="Search" />
+
+        <LinearLayout
+            android:id="@+id/spHome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:visibility="gone">
+
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                style="@style/SpinKitView.Small.FoldingCube"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:SpinKit_Color="@color/colorPrimary" />
+
+        </LinearLayout>
+
+
+        <include
+            android:id="@+id/layoutProfile"
+            layout="@layout/acount_detail_result"
+            android:visibility="gone" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRepos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:visibility="gone"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            style="@style/SpinKitView.Small.FoldingCube"
-            app:SpinKit_Color="@color/colorPrimary"
-            />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
 
     </LinearLayout>
 
+</androidx.core.widget.NestedScrollView>
 
-    <include
-        android:id="@+id/layoutProfile"
-        layout="@layout/acount_detail_result"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvRepos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-
-</LinearLayout>

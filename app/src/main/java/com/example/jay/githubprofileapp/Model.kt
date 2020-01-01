@@ -8,4 +8,13 @@ object Model {
 
 }
 
-data class Repo(val full_name: String, val forks_count: Int)
+data class Repo(
+    val full_name: String,
+    val name: String,
+    val fork: Boolean,
+    val forks_count: Int,
+    val language: String,
+    val size: Int,
+    val watchers_count: Int,
+    val stargazers_count: Int
+)
