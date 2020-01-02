@@ -1,5 +1,6 @@
 package com.example.jay.githubprofileapp;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,8 +61,11 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.Holder> {
         holder.tvWatchers.setText(ExtensionsKt.addNum("Watcher", item.getWatchers_count()));
         holder.tvForks.setText(ExtensionsKt.addNum("Forks", item.getForks_count()));
 
-
-
+        if (item.getFork()) {
+            holder.itemView.setBackgroundColor(Color.MAGENTA);
+        } else {
+            holder.itemView.setBackgroundColor(Color.GREEN);
+        }
 
     }
 

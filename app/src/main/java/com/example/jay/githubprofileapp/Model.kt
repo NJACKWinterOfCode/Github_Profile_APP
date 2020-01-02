@@ -13,7 +13,14 @@ object Model {
                       val followers: Int,
                       val following: Int,
                       val public_gists: Int
-    )
+    ) {
+
+        fun getUserFromTo(): String {
+            val start = created_at.substring(created_at.indexOf('T'))
+            val end = updated_at.substring(updated_at.indexOf('T'))
+            return "{from $start to $end .}"
+        }
+    }
 
 }
 

@@ -127,9 +127,14 @@ class MainActivity : AppCompatActivity() {
         if (result != null) {
             tvName.text = result.login
             tvBio.text = result.bio
-            tvUrl.text = result.url
-
             Glide.with(this).load(result.avatar_url).into(imUser)
+
+            tvCountOfFollower.text = result.followers.toString()
+            tvCountOfFollowing.text = result.following.toString()
+            tvLocation.text = result.location
+            tvPublicGists.text = result.public_gists.toString()
+            tvPublicRepos.text = result.public_repos.toString()
+            tvUserFromTo.text = result.getUserFromTo()
         }
     }
 
