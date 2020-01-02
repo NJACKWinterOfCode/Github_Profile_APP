@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -127,6 +128,8 @@ class MainActivity : AppCompatActivity() {
             tvName.text = result.login
             tvBio.text = result.bio
             tvUrl.text = result.url
+
+            Glide.with(this).load(result.avatar_url).into(imUser)
         }
     }
 

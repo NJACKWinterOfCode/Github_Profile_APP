@@ -4,7 +4,16 @@ object Model {
 
     data class Result(val login: String,
                       val bio:String,
-                      val url:String)
+                      val url: String,
+                      val avatar_url: String,
+                      val location: String,
+                      val created_at: String,
+                      val updated_at: String,
+                      val public_repos: Int,
+                      val followers: Int,
+                      val following: Int,
+                      val public_gists: Int
+    )
 
 }
 
