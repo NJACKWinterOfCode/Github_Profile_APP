@@ -30,6 +30,7 @@
             android:layout_marginBottom="10dp"
             android:background="@color/viewBgColor"
             android:hint="@string/username"
+            android:text=""
             android:inputType="text"
             android:padding="16dp"
             android:textAlignment="viewStart" />
@@ -65,13 +66,10 @@
             layout="@layout/acount_detail_result"
             android:visibility="gone" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvRepos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        <include
+            android:id="@+id/repoDetails"
+            layout="@layout/repo_details"
+            android:visibility="gone" />
 
 
     </LinearLayout>

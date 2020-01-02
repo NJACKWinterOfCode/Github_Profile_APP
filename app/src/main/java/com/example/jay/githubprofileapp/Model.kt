@@ -16,9 +16,9 @@ object Model {
     ) {
 
         fun getUserFromTo(): String {
-            val start = created_at.substring(created_at.indexOf('T'))
-            val end = updated_at.substring(updated_at.indexOf('T'))
-            return "{from $start to $end .}"
+            val start = created_at.substring(0, created_at.indexOf('T'))
+            val end = updated_at.substring(0, updated_at.indexOf('T'))
+            return "from $start to $end ."
         }
     }
 
@@ -29,7 +29,7 @@ data class Repo(
     val name: String,
     val fork: Boolean,
     val forks_count: Int,
-    val language: String,
+    val language: String?,
     val size: Int,
     val watchers_count: Int,
     val stargazers_count: Int
