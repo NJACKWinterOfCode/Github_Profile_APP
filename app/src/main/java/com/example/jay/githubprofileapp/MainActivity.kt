@@ -1,4 +1,5 @@
 package com.example.jay.githubprofileapp
+
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
             if (edit_search.text.toString().isNotEmpty()) {
                 name = edit_search.text.toString()
                 beginSearch(name)
-            }else{
+            } else {
                 edit_search.setError("Please enter valid name")
             }
         }
@@ -50,17 +51,29 @@ class MainActivity : AppCompatActivity() {
                     loadRepos()
                 },
                 { error ->
-                    val msg =  if (error.message!!.contains("404"))  "Not Found" else "Network Issue"
+                    val msg = if (error.message!!.contains("404")) "Not Found" else "Network Issue"
                     edit_search.error = msg
                     erroLoading()
                 }
             )
     }
 
-    private fun erroLoading(){
+    private fun erroLoading() {
         btnSearch.isEnabled = true
         hideIndicator()
+        hideDataLayout()
     }
+
+    private fun hideDataLayout() {
+        layoutProfile.visibility = View.GONE
+        rvRepos.visibility = View.GONE
+    }
+
+    private fun showDataLayout() {
+        layoutProfile.visibility = View.VISIBLE
+        rvRepos.visibility = View.VISIBLE
+    }
+
 
     private fun hideIndicator() {
         spHome.visibility = View.GONE
@@ -68,9 +81,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun successLoading() {
         hideIndicator()
-
-        layoutProfile.visibility  = View.VISIBLE
-        rvRepos.visibility = View.VISIBLE
+        showDataLayout()
         btnSearch.isEnabled = true
 
     }
@@ -78,14 +89,11 @@ class MainActivity : AppCompatActivity() {
     private fun startLoading() {
         spHome.visibility = View.VISIBLE
 
-        layoutProfile.visibility  = View.GONE
-        rvRepos.visibility = View.GONE
-
+        hideDataLayout()
         btnSearch.isEnabled = false
     }
 
     private fun loadRepos() {
-        Log.d(TAG, "loadRepos")
         try {
             disposable = githubApiSevice.getRepos(name)
                 .subscribeOn(Schedulers.io())
@@ -115,7 +123,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setProfileData(result: Model.Result?) {
-        if (result != null){
+        if (result != null) {
             tvName.text = result.login
             tvBio.text = result.bio
             tvUrl.text = result.url
