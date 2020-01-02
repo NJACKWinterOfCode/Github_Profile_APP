@@ -7,7 +7,7 @@ An app that gives the details of an user when a github username is typed.
   * Must create fragments (MainActivity should be the only activity present and it would be the base of all the other fragments that would be created later)
 * Implementation of the API call using retrofit
 * Show the user data properly in a fragment
-
+* Show Repository list with some details (name, size, language, stars, forks).
 
 ## Contributing Guidelines
 * Read the [Get-Started](https://github.com/NJACKWinterOfCode/Get-Started) Repo
