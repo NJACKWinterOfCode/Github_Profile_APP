@@ -11,14 +11,14 @@
         android:id="@+id/edit_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="enter"
+        android:hint="@string/enter_github_username"
         android:textAlignment="center" />
 
     <Button
         android:id="@+id/btn_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="enter" />
+        android:text="@string/enter" />
 
     <TextView
         android:id="@+id/txt_search_result"
