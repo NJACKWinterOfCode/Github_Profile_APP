@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">GithubProfileApp</string>
-    <string name="github_username">Github UserName</string>
-    <string name="username">username</string>
-    <string name="filter_by_language">filter by language(Java, Python,etc)</string>
 </resources>
+
+
