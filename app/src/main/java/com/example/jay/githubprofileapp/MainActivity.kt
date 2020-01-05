@@ -1,5 +1,6 @@
 package com.example.jay.githubprofileapp
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -7,12 +8,15 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.nefrit.ratingview.model.Scale
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.acount_detail_result.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.repo_details.*
+import kotlinx.android.synthetic.main.statisticsview.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -75,7 +79,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun beginSearch(searchString: String) {
         startLoading()
-        Thread.sleep(1500)
+        //Thread.sleep(1500)
         disposable = githubApiSevice.Check(searchString)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -154,9 +158,50 @@ class MainActivity : AppCompatActivity() {
     private fun fillRV(result: List<Repo>) {
         Log.d(TAG, "size ${result.size}")
         repoList = result
-        adapter.list = repoList
+        adapter.list = repoList // notify rv with list of data
+        makeRatingPerLang()
+        makeRatingPerLangAndTotal()
 
     }
+
+    private fun makeRatingPerLang() {
+        val data = repoList.groupBy { it.language }
+            .mapValues { it.value.size } // after group map size of repo into number
+            .mapKeys { entry -> if (entry.key == null) "NA" else entry.key }
+            .toList() // list with each item is (lang,count)
+            .map { entry ->
+                Scale(
+                    entry.first,
+                    entry.second,
+                    Color.WHITE
+                )
+            } // map them to scale (name, count ,color)
+
+        langRating.setScales(data)
+
+    }
+
+    private fun makeRatingPerLangAndTotal() {
+        val data = repoList.groupBy { it.language }
+            .mapValues { getSum(it.value) } // after group map size of repo into number
+            .mapKeys { entry -> if (entry.key == null) "NA" else entry.key }
+            .toList() // list with each item is (lang,count)
+            .map { entry ->
+                Scale(
+                    entry.first,
+                    entry.second,
+                    Color.WHITE
+                )
+            } // map them to scale (name, count ,color)
+
+        langRatingTotal.setScales(data)
+
+    }
+
+    private fun getSum(value: List<Repo>): Int {
+        return value.sumBy { repo -> repo.size }
+    }
+
 
     private fun setProfileData(result: Model.Result?) {
         if (result != null) {
@@ -176,5 +221,9 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         disposable?.dispose()
+    }
+
+    private fun log(msg: String) {
+        Log.d("MainActivity", msg)
     }
 }

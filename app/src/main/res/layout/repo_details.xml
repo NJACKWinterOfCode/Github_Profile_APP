@@ -5,6 +5,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <include layout="@layout/statisticsview" />
+
     <EditText
         android:id="@+id/edFilter"
         android:layout_width="match_parent"
@@ -12,7 +14,7 @@
         android:layout_marginBottom="16dp"
         android:background="@color/viewBgColor"
         android:drawableEnd="@drawable/ic_filter_list"
-        android:hint="@string/filter_by_language"
+        android:hint="filter by language(Java, Python,etc)"
         android:inputType="text"
         android:paddingTop="6dp"
         android:paddingBottom="6dp"

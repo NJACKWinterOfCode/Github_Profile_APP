@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">GithubProfileApp</string>
+    <string name="enter_github_user_name">Enter Github User Name</string>
+
 </resources>
 
 
