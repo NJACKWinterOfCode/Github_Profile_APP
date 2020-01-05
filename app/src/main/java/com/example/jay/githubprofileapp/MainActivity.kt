@@ -7,7 +7,6 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
 import com.nefrit.ratingview.model.Scale
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -207,7 +206,12 @@ class MainActivity : AppCompatActivity() {
         if (result != null) {
             tvName.text = result.login
             tvBio.text = result.bio
-            Glide.with(this).load(result.avatar_url).into(imUser)
+
+            GlideApp.with(this)
+                .load(result.avatar_url)
+                .placeholder(R.drawable.ic_person)
+                .into(imUser)
+
 
             tvCountOfFollower.text = result.followers.toString()
             tvCountOfFollowing.text = result.following.toString()
