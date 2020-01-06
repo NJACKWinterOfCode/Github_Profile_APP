@@ -1,18 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/mainBg">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:padding="5dp"
+            android:text="@string/github_username" />
+
+
+        <EditText
+            android:id="@+id/edit_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/viewBgColor"
+            android:hint="@string/username"
+            android:text=""
+            android:inputType="text"
+            android:padding="16dp"
+            android:textAlignment="viewStart" />
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:text="Search" />
+
+        <LinearLayout
+            android:id="@+id/spHome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:visibility="gone">
+
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                style="@style/SpinKitView.Small.FoldingCube"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:SpinKit_Color="@color/colorPrimary" />
+
+        </LinearLayout>
+
+
+        <include
+            android:id="@+id/layoutProfile"
+            layout="@layout/acount_detail_result"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/repoDetails"
+            layout="@layout/repo_details"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
+
